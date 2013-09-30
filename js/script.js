@@ -6,6 +6,14 @@
 	onLoad Function -------------------------------------------------- */
 	$(document).ready(function(){
 
+		// Loader
+		var $loader = $('<div class="loader"></div>');
+		$('body').append($loader);
+
+		// Display loader if we do ajax call
+		$(document)
+			.ajaxStart(function() { $loader.show(); })
+			.ajaxStop(function(){ $loader.hide(); });
 
 		// Main Navigation Hover
 		$('.nav-main')
@@ -35,12 +43,13 @@
 		if($category_products.size() > 0){
 			var $parent = $category_products.parent();
 
-
 			$parent.on('click.view-mode', '[data-toggle=view]', function(){
 				if( ($(this).hasClass('btn-grid') && $parent.hasClass('grid')) || ($(this).hasClass('btn-list') && $parent.hasClass('list')))
 					return;
 
-				$parent.toggleClass('grid').toggleClass('list');
+				// Add loader effect
+				$loader.show();
+				setTimeout(function(){ $parent.toggleClass('grid').toggleClass('list'); $loader.hide(); }, 400);
 
 				return false;
 			});
@@ -86,6 +95,17 @@
 		//.Form Filters
 		$('#form-filters').each(function(){
 			var $form = $(this);
+			$form
+			.on('change.filter', ':checkbox', function(){
+				$loader.show();
+
+				$form.submit();
+			})
+			.find('.group-btn > .btn').addClass('sr-only');
+		});
+		/*
+$('#form-filters').each(function(){
+			var $form = $(this);
 
 			$form
 			.on('change.filter', ':checkbox', function(){
@@ -93,6 +113,7 @@
 			})
 			.find('.group-btn > .btn').addClass('sr-only');
 		});
+*/
 
 		// Product details Thumbnails
 		$('#product-gallery').each(function(){
