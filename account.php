@@ -101,8 +101,8 @@
 													</td>
 													<td>
 														<div class="group-btn">
-															<a href="#" class="btn btn-edit-address" data-toggle="tooltip" title="Edit this address"><i class="icon-pencil"></i> <span>Edit</span></a>
-															<a href="#" class="btn btn-remove-address" data-toggle="tooltip" title="Remove this address"><i class="icon-remove"></i> <span>Cancel</span></a>
+															<a href="#account-address" class="btn btn-edit-address" data-toggle="tooltip" title="Edit this address"><i class="icon-pencil"></i> <span>Edit</span></a>
+															<a href="#account-address" class="btn btn-remove-address" data-toggle="confirm" data-confirm-title="Do you really want to delete this address ?" tistle="Remove this address"><i class="icon-remove"></i> <span>Cancel</span></a>
 														</div>
 													</td>
 												</tr>

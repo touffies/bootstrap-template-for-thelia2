@@ -30,5 +30,13 @@ URL: http://www.thelia.net
 
 	<!-- StyleSheet -->
 	<link rel="stylesheet/less" href="less/styles.less">
+	<script>
+		less = {
+			env: "development", // or "production"
+			dumpLineNumbers: "all", // or "mediaQuery" or "all"
+		};
+		/* '#!watch' to the browser URL : Watch mode is a client-side feature which enables your styles to refresh automatically as they are changed */
+	</script>
+
 	<script src="js/libs/less.js"></script>
 </head>

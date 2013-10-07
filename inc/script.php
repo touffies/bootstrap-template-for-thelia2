@@ -17,6 +17,8 @@
 	<script src="js/bootstrap/popover.js"></script>
 	<script src="js/bootstrap/affix.js"></script>
 
+	<script src="js/plugins/bootbox/bootbox.js"></script>
+
 	<!-- Custom scripts -->
 	<script src="js/script.js"></script>
 

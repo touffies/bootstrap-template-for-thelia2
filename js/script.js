@@ -38,6 +38,44 @@
 			selector: '[data-toggle=tooltip]'
 		});
 
+		// Popover
+		/*
+var confirm_delete = {
+    		html : true
+    		, placement: 'left'
+    		, title: 'Are you sure?'
+    		, content: '<div class="btn-group">' +
+    				'<a class="btn btn-small" href="" target=""></a>' +
+    				'<a class="btn btn-small" data-dismiss="confirmation"></a>' +
+    				'</div>'
+    	};
+		$('[data-toggle=confirmation]').popover(confirm_delete);
+*/
+        // en-US translation for bootbox
+        //if(window.bootbox) bootbox.setDefaults({locale: "fr"});
+
+		$(document).on('click.confirm', '[data-toggle="confirm"]', function (e) {
+			var $this	= $(this),
+				href	= $this.attr('href'),
+				title	= $this.attr('data-confirm-title') ? $this.attr('data-confirm-title') : 'Are you sure?';
+
+				bootbox.confirm(title, function(confirm) {
+					if(confirm){
+						if(href){
+							window.location.href = href;
+						} else {
+							// If forms
+							var $form = $this.closest("form");
+							if($form.size() > 0){
+								$form.submit();
+							}
+						}
+					}
+				});
+
+			return false;
+		});
+
 		// Toolbar
 		var $category_products = $('#category-products');
 		if($category_products.size() > 0){
@@ -146,32 +184,6 @@ $('#form-filters').each(function(){
 				$label.filter('[for="' + $(this).attr('id') + '"]').addClass('active');
 			}).filter(':has(:checked)').addClass('active');
 		});
-
-
-		// Styliser le message Confirm par Bootstrap sur un formulaire
-/*
-		$('body').on('click', '[data-confirm]', function(){
-			var $this = $(this);
-			bootbox.confirm($(this).attr('data-confirm'),
-				function(result){
-					if(result) {
-						// Si lien
-						if($this.attr('href')){
-							window.location.href = $this.attr('href');
-						}else{
-							// Si on doit soumettre un formulaire
-							var $form = $this.closest("form");
-							if($form.size() > 0){
-								$form.submit();
-							}
-						}
-					}
-				}
-			);
-
-			return false;
-		});
-*/
 	});
 
 })(jQuery);
