@@ -86,14 +86,49 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-cart navbar-right">
 							<li<?php echo ($page == 'register') ? ' class="active"' : ''; ?>><a href="register.php"<?php echo ($page == 'home') ? ' tabindex="-1"' : ''; ?> class="register">Register!</a></li>
-							<li<?php echo ($page == 'login') ? ' class="active"' : ''; ?>><a href="login.php"<?php echo ($page == 'home') ? ' tabindex="-1"' : ''; ?> class="login">Log In!</a></li>
+
+							<!-- Login link -->
+							<li<?php echo ($page == 'login') ? ' class="active"' : ''; ?>><a href="register.php"<?php echo ($page == 'home') ? ' tabindex="-1"' : ''; ?> class="login">Log In!</a></li>
+
+							<!-- Login form -->
+							<li class="dropdown<?php echo ($page == 'login') ? ' active' : ''; ?>">
+								<a href="login.php" class="login"<?php echo ($page == 'home') ? ' tabindex="-1"' : ''; ?>>Log In!</a>
+								<div class="dropdown-menu">
+									<form id="form-login-mini" action="login.php" method="post" role="form">
+										<div class="form-group group-email-mini">
+											<label for="email-mini">Email address:</label>
+											<input type="email" name="email" id="email-mini" class="form-control" value="" aria-required="true" required>
+										</div>
+										<div class="form-group group-email">
+											<label for="password-mini">Password</label>
+											<input type="password" name="password" id="password-mini" class="form-control" value="" aria-required="true" required>
+										</div>
+										<div class="group-btn">
+											<button type="submit" class="btn btn-login-mini">Sign In</button>
+											<a href="register.php" class="btn btn-register-mini">Register</a>
+										</div>
+									</form>
+								</div>
+							</li>
+
+							<!-- Empty cart -->
 							<li class="dropdown">
-								<a href="cart.php" rel="nofollow" class="dropdown-toggle cart" data-toggle="dropdown">
+								<a href="cart.php" rel="nofollow" class="cart">
+									Cart <span class="badge">0</span>
+								</a>
+								<div class="dropdown-menu cart-content">
+									<p>You have no items in your shopping cart.</p>
+								</div>
+							</li>
+
+							<!-- Not empty cart -->
+							<li class="dropdown cart-not-empty">
+								<a href="cart.php" rel="nofollow" class="cart">
 									Cart <span class="badge">2</span>
 								</a>
-								<div class="dropdown-menu cart-content navbar-right" style="width:350px;border-top:none;padding:0">
+								<div class="dropdown-menu cart-content">
 									<form id="form-cart-mini" action="cart-step2.php" method="post" role="form">
-										<table class="table table-cart-mini" style="margin-bottom:0">
+										<table class="table table-cart-mini">
 											<colgroup>
 												<col width="70">
 												<col>
